@@ -1414,6 +1414,10 @@ components:
           type: string
           nullable: true
           example: prod-db
+        resolved:
+          type: boolean
+          nullable: false
+          example: false
 
     UserOut:
       type: object
