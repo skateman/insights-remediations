@@ -85,7 +85,13 @@ module.exports = new class extends Connector {
     }
 
     async ping () {
-        const response = queries.runQuery(BATCH_DETAILS_QUERY, {limit: 1}, this.getForwardedHeaders());
+        const response = queries.runQuery(BATCH_DETAILS_QUERY, {
+            filter: {OR: null},
+            order_by: 'display_name',
+            order_how: 'ASC',
+            limit: pageSize,
+            offset: 0
+        }, this.getForwardedHeaders());
         assert(Array.isArray(response.data.hosts.data));
     }
 }();
